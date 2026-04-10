@@ -1,6 +1,8 @@
 # Gradle
 .gradle/
+build/
 **/build/
+**/previous-compilation-data.bin
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/**/build/
 
@@ -10,6 +12,7 @@
 *.ipr
 *.iws
 out/
+**/bin/
 
 # OS
 .DS_Store
