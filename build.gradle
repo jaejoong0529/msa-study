@@ -1,0 +1,32 @@
+allprojects {
+    group = 'com.spring-cloud'
+    version = '0.0.1-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+subprojects {
+    pluginManager.withPlugin('java') {
+        java {
+            toolchain {
+                languageVersion = JavaLanguageVersion.of(17)
+            }
+        }
+        configurations {
+            compileOnly {
+                extendsFrom annotationProcessor
+            }
+        }
+        tasks.named('test') {
+            useJUnitPlatform()
+        }
+        dependencies {
+            compileOnly 'org.projectlombok:lombok'
+            annotationProcessor 'org.projectlombok:lombok'
+            testImplementation 'org.springframework.boot:spring-boot-starter-test'
+            testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+        }
+    }
+}
